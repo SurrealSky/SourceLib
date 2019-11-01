@@ -16,5 +16,5 @@ using namespace SurrealTypes;
 #include<MiniDump.h>
 #include<SimpleIni.h>
 
-#include"../MemoryPool/MemoryPool.h"
-#pragma comment(lib,"../debug/MemoryPool.lib")
+#include"../MemoryPool/MemMgr.h"
+#pragma comment(lib,"../debug/MemMgr.lib")
