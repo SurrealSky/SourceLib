@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="CommonLib">
+      <UniqueIdentifier>{6297ba43-be68-4af4-86be-36cbf63b904c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonLib\disasm">
+      <UniqueIdentifier>{9475da8f-2510-4fce-9293-5d7ed5340722}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonLib\pack">
+      <UniqueIdentifier>{b1bb6dca-947d-42d4-be21-7e50fe0783b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonLib\xml">
+      <UniqueIdentifier>{c319f0e8-479b-4427-a64b-50bf4d339956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonLib\LogLib">
+      <UniqueIdentifier>{c2dc8b79-48f4-45f6-9b0f-6a61bafab499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonLib\isaac">
+      <UniqueIdentifier>{95e93499-7d62-4524-b90b-3ad9409ce1e2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\CommonLib\MiniDump.cpp">
+      <Filter>CommonLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\pack\TXCommPack.cpp">
+      <Filter>CommonLib\pack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\disasm\asmserv.cpp">
+      <Filter>CommonLib\disasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\disasm\assembl.cpp">
+      <Filter>CommonLib\disasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\disasm\disasm.cpp">
+      <Filter>CommonLib\disasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\xml\Markup.cpp">
+      <Filter>CommonLib\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="demo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\LogLib\DebugLog.cpp">
+      <Filter>CommonLib\LogLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\LogLib\log4z.cpp">
+      <Filter>CommonLib\LogLib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="demo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\CodedConvert.h">
+      <Filter>CommonLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\EasySize.h">
+      <Filter>CommonLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\Hex.h">
+      <Filter>CommonLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\Lock.h">
+      <Filter>CommonLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\MiniDump.h">
+      <Filter>CommonLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\SimpleIni.h">
+      <Filter>CommonLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\pack\ByteBuffer.h">
+      <Filter>CommonLib\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\pack\TXCommPack.h">
+      <Filter>CommonLib\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\disasm\disasm.h">
+      <Filter>CommonLib\disasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\xml\Markup.h">
+      <Filter>CommonLib\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\typedef.h">
+      <Filter>CommonLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\LogLib\DebugLog.h">
+      <Filter>CommonLib\LogLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\LogLib\log4z.h">
+      <Filter>CommonLib\LogLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\isaac\isaac32_engine.h">
+      <Filter>CommonLib\isaac</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\isaac\isaac64_engine.h">
+      <Filter>CommonLib\isaac</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

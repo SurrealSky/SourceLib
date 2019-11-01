@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPPSourceLib", "CPPSourceLib\CPPSourceLib.vcxproj", "{999339C2-A954-4EFF-81C4-2EA9490D884E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MemoryPool", "MemoryPool\MemoryPool.vcxproj", "{0E580F73-5386-4B41-8BDD-3D0A9857D43F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{999339C2-A954-4EFF-81C4-2EA9490D884E}.Debug|x64.ActiveCfg = Debug|x64
+		{999339C2-A954-4EFF-81C4-2EA9490D884E}.Debug|x64.Build.0 = Debug|x64
+		{999339C2-A954-4EFF-81C4-2EA9490D884E}.Debug|x86.ActiveCfg = Debug|Win32
+		{999339C2-A954-4EFF-81C4-2EA9490D884E}.Debug|x86.Build.0 = Debug|Win32
+		{999339C2-A954-4EFF-81C4-2EA9490D884E}.Release|x64.ActiveCfg = Release|x64
+		{999339C2-A954-4EFF-81C4-2EA9490D884E}.Release|x64.Build.0 = Release|x64
+		{999339C2-A954-4EFF-81C4-2EA9490D884E}.Release|x86.ActiveCfg = Release|Win32
+		{999339C2-A954-4EFF-81C4-2EA9490D884E}.Release|x86.Build.0 = Release|Win32
+		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Debug|x64.ActiveCfg = Debug|Win32
+		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Debug|x86.ActiveCfg = Debug|Win32
+		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Debug|x86.Build.0 = Debug|Win32
+		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Release|x64.ActiveCfg = Release|Win32
+		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Release|x86.ActiveCfg = Release|Win32
+		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
