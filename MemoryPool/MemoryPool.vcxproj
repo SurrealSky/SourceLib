@@ -80,6 +80,7 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\CommonLib\typedef.h" />
     <ClInclude Include="include\Memory\Allocator.hpp" />
     <ClInclude Include="include\Memory\ContainerAllocator.hpp" />
     <ClInclude Include="include\Memory\FixedMemoryPool.hpp" />
