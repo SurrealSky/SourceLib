@@ -26,6 +26,7 @@ class MemMgr::MemManager
 {
 public:
 	MemManager(void);
+	MemManager(const MemManager&);
 	virtual ~MemManager(void);
 private:
 	StdAllocT alloc1;

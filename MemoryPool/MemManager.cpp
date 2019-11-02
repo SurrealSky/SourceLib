@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "MemManager.h"
+#include<LogLib\DebugLog.h>
 
 MemMgr::MemManager::MemManager(void)
 {
@@ -10,15 +11,22 @@ MemMgr::MemManager::MemManager(void)
 	SGIMTAllocatorList.clear();
 }
 
+MemMgr::MemManager::MemManager(const MemManager &m)
+{
+
+}
+
 MemMgr::MemManager::~MemManager(void)
 {
 	//Çå³ýÄÚ´æ
+	SurrealDebugLog::DebugLog("MemManager","start free all alloc...");
 	map<void*, unsigned int>::iterator it;
 	if(MemManager::StdAllocTList.size()>0)
 	{
 		for(it=MemManager::StdAllocTList.begin();it!=MemManager::StdAllocTList.end();++it)
 		{
 			alloc1.deallocate((char*)it->first,it->second);
+			SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemType=%02X,address=0x%08X,size=%X free!", "MemManager", TypeStdAllocTAlloc, it->first, it->second));
 		}
 	}
 	MemManager::StdAllocTList.clear();
@@ -28,6 +36,7 @@ MemMgr::MemManager::~MemManager(void)
 		for(it=MemManager::SGIAllocTList.begin();it!=MemManager::SGIAllocTList.end();++it)
 		{
 			alloc2.Deallocate((char*)it->first,it->second);
+			SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemType=%02X,address=0x%08X,size=%X free!", "MemManager", TypeSGIAllocTAlloc, it->first, it->second));
 		}
 	}
 	MemManager::SGIAllocTList.clear();
@@ -37,6 +46,7 @@ MemMgr::MemManager::~MemManager(void)
 		for(it=MemManager::SGIVirtualAllocTList.begin();it!=MemManager::SGIVirtualAllocTList.end();++it)
 		{
 			alloc3.Deallocate((char*)it->first,it->second);
+			SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemType=%02X,address=0x%08X,size=%X free!", "MemManager", TypeSGIVirtualAllocTAlloc, it->first, it->second));
 		}
 	}
 	MemManager::SGIVirtualAllocTList.clear();
@@ -46,6 +56,7 @@ MemMgr::MemManager::~MemManager(void)
 		for(it=MemManager::SGIHeapAllocTList.begin();it!=MemManager::SGIHeapAllocTList.end();++it)
 		{
 			alloc4.Deallocate((char*)it->first,it->second);
+			SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemType=%02X,address=0x%08X,size=%X free!", "MemManager", TypeSGIHeapAllocTAlloc, it->first, it->second));
 		}
 	}
 	MemManager::SGIHeapAllocTList.clear();
@@ -55,6 +66,7 @@ MemMgr::MemManager::~MemManager(void)
 		for(it=MemManager::SGIMTAllocatorList.begin();it!=MemManager::SGIMTAllocatorList.end();++it)
 		{
 			alloc5.Deallocate((char*)it->first,it->second);
+			SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemType=%02X,address=0x%08X,size=%X free!", "MemManager", TypeSGIMTAllocatorAlloc, it->first, it->second));
 		}
 	}
 	MemManager::SGIMTAllocatorList.clear();

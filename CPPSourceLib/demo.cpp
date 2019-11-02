@@ -2,8 +2,7 @@
 
 int main()
 {
-	CLock lock;
-	SurrealMemMgr::MemMgr memmgr;
+	SurrealMemMgr::MemMgr &memmgr= SurrealMemMgr::MemMgr::GetInstance();
 	STu8 *p1=memmgr.CommonAlloc(SurrealMemMgr::TypeSGIAllocTAlloc, 100);
 	STu8 *p2 = memmgr.CommonAlloc(SurrealMemMgr::TypeSGIHeapAllocTAlloc, 200);
 	STu8 *p3 = memmgr.CommonAlloc(SurrealMemMgr::TypeSGIMTAllocatorAlloc, 200);

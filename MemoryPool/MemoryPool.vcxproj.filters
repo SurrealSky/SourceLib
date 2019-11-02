@@ -28,6 +28,9 @@
     <Filter Include="Export">
       <UniqueIdentifier>{55556d64-66fe-4d64-869f-59531d138642}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CommonLib\LogLib">
+      <UniqueIdentifier>{c4f4d888-d0fa-4d72-ae28-d5b432804971}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -81,6 +84,12 @@
     <ClInclude Include="MemMgr.h">
       <Filter>Export</Filter>
     </ClInclude>
+    <ClInclude Include="..\CommonLib\LogLib\DebugLog.h">
+      <Filter>CommonLib\LogLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\LogLib\log4z.h">
+      <Filter>CommonLib\LogLib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -94,6 +103,12 @@
     </ClCompile>
     <ClCompile Include="MemMGR.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\LogLib\DebugLog.cpp">
+      <Filter>CommonLib\LogLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\LogLib\log4z.cpp">
+      <Filter>CommonLib\LogLib</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

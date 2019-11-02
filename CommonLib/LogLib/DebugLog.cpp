@@ -1,13 +1,11 @@
-#include <windows.h>
-#include <stdio.h>
-
 #include "./DebugLog.h"
 #include"../LogLib/log4z.h"
+
 using namespace zsummer::log4z;
 
 namespace SurrealDebugLog
 {
-	void DebugLog(LPCSTR lpOutputString)
+	void DebugLog(const std::string& OutputString)
 	{
 #ifdef Dbg
 		ILog4zManager::getRef().setLoggerPath(LOG4Z_MAIN_LOGGER_ID, "./log");
@@ -16,12 +14,12 @@ namespace SurrealDebugLog
 		//LOGD: LOG WITH level LOG_DEBUG
 		//LOGI: LOG WITH level LOG_INFO
 
-		LOGD(lpOutputString);
+		LOGD(OutputString);
 
 #endif
 	}
 
-	void DebugLog(LPCSTR lpTag, LPCSTR lpOutputString)
+	void DebugLog(const std::string& Tag, const std::string OutputString)
 	{
 #ifdef Dbg
 		ILog4zManager::getRef().setLoggerPath(LOG4Z_MAIN_LOGGER_ID, "./log");
@@ -30,12 +28,11 @@ namespace SurrealDebugLog
 		//LOGD: LOG WITH level LOG_DEBUG
 		//LOGI: LOG WITH level LOG_INFO
 
-		LOGFMTT("%s:%s(%d)", lpTag, lpOutputString, strlen(lpOutputString));
-
+		LOGD(Tag <<":"<<OutputString);
 #endif
 	}
 
-	void DebugLogHex(LPCSTR lpTag, LPCSTR lpOutputString, DWORD lpOutputStringLen)
+	void DebugLogHex(const std::string &Tag, std::string &OutputString, SurrealTypes::STu32 OutputStringLen)
 	{
 #ifdef Dbg
 		ILog4zManager::getRef().setLoggerPath(LOG4Z_MAIN_LOGGER_ID, "./log");
@@ -44,7 +41,7 @@ namespace SurrealDebugLog
 		//LOGD: LOG WITH level LOG_DEBUG
 		//LOGI: LOG WITH level LOG_INFO
 
-		LOGD(lpTag << ":" << Log4zBinary(lpOutputString, lpOutputStringLen));
+		LOGD(Tag.c_str() << ":" << Log4zBinary(OutputString.c_str(), OutputStringLen));
 		//LOGD(lpTag << ":" << lpOutputStringLen);
 
 #endif

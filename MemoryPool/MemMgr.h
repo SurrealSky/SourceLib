@@ -30,8 +30,13 @@ namespace SurrealMemMgr
 	class /*MEMORYEXPORTS_API*/ MemMgr
 	{
 	public:
-		explicit MemMgr();
+		static MemMgr &GetInstance();
+		int GetState();
+	private:
+		MemMgr();
 		~MemMgr();
+		MemMgr(const MemMgr &);
+		const MemMgr &operator=(const MemMgr&);
 	private:
 		class MemManager;
 		MemManager * pImpl;
