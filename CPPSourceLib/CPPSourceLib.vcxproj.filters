@@ -31,6 +31,9 @@
     <Filter Include="CommonLib\isaac">
       <UniqueIdentifier>{95e93499-7d62-4524-b90b-3ad9409ce1e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CommonLib\http">
+      <UniqueIdentifier>{019bafdc-b50d-4f04-90e7-6518dd68573d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\CommonLib\MiniDump.cpp">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="..\CommonLib\isaac\isaac64_engine.h">
       <Filter>CommonLib\isaac</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\http\http_util.h">
+      <Filter>CommonLib\http</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -129,6 +129,7 @@
     <ClInclude Include="..\CommonLib\disasm\disasm.h" />
     <ClInclude Include="..\CommonLib\EasySize.h" />
     <ClInclude Include="..\CommonLib\Hex.h" />
+    <ClInclude Include="..\CommonLib\http\http_util.h" />
     <ClInclude Include="..\CommonLib\isaac\isaac32_engine.h" />
     <ClInclude Include="..\CommonLib\isaac\isaac64_engine.h" />
     <ClInclude Include="..\CommonLib\Lock.h" />

@@ -15,6 +15,7 @@ using namespace SurrealTypes;
 #include<Lock.h>
 #include<MiniDump.h>
 #include<SimpleIni.h>
+#include<http\http_util.h>
 
 #include"../MemoryPool/MemMgr.h"
 #pragma comment(lib,"../debug/MemMgr.lib")
