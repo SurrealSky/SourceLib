@@ -47,6 +47,8 @@ std::vector<std::string>& ParseProto::GetMessageList()
 void ParseProto::PrintDataFile(const std::string& message_name,const unsigned char *buffer,const unsigned int size, std::map<std::string, std::string> &mapresult)
 {
 	if (size) {
+		std::string strdebug = PrintDebugString(buffer,size);
+		mapresult.insert(std::pair<std::string, std::string>(message_name, strdebug));
 		int ipos = strProtoFile.find_last_of('\\');
 		if (ipos == -1)
 		{
@@ -63,12 +65,11 @@ void ParseProto::PrintDataFile(const std::string& message_name,const unsigned ch
 		if (pFileDescriptor)
 		{
 			const google::protobuf::Descriptor *p=mImport.pool()->FindMessageTypeByName(message_name);
+			if (p == NULL) return;
 			google::protobuf::DynamicMessageFactory factory;
 			google::protobuf::Message *msg = factory.GetPrototype(p)->New();
 			msg->ParseFromArray(buffer, size);
 			msg->DiscardUnknownFields();
-			std::string strdebug = msg->Utf8DebugString();
-			mapresult.insert(std::pair<std::string, std::string>("DebugString", strdebug));
 			TraversalFieldDescript(*msg, mapresult);
 			delete msg;
 
