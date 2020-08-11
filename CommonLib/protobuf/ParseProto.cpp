@@ -105,14 +105,19 @@ void ParseProto::DoTraversalFieldDescript(const google::protobuf::Message& messa
 	if (field->label() == google::protobuf::FieldDescriptor::LABEL_REPEATED)
 	{
 		//repeated message
-		for (int i = 0; i < field->message_type()->field_count(); i++)
+		int count = reflection->FieldSize(message, field);
+		std::string repeatedstr = "";
+		for (int i = 0; i < count; i++)
 		{
-			const google::protobuf::Message &m = reflection->GetRepeatedMessage(message, field, i);
-			const google::protobuf::Reflection * ref = m.GetReflection();
-			//const google::protobuf::FieldDescriptor *f = m.GetDescriptor();
-			//DoTraversalFieldDescript(m, field->message_type()->field(i), ref);
-			result.insert(std::pair<std::string, std::string>("repeated message", "not support"));
+			//const google::protobuf::Message &m = reflection->GetRepeatedMessage(message, field, i);
+			//const google::protobuf::Reflection * ref = m.GetReflection();
+			//const google::protobuf::FieldDescriptor *f = (const google::protobuf::FieldDescriptor *)(m.GetDescriptor());
+			//DoTraversalFieldDescript(m, field->message_type()->field(i), ref, result);
+			//result.insert(std::pair<std::string, std::string>("repeated message", "not support"));
+			const google::protobuf::Message &msg = reflection->GetRepeatedMessage(message, field, i);
+			repeatedstr.append(msg.DebugString());
 		}
+		result.insert(std::pair<std::string, std::string>(field->full_name(), repeatedstr));
 		return;
 	}
 	switch (field->type())
