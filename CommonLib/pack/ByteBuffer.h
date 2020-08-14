@@ -1,9 +1,20 @@
 #pragma once
 #include<vector>
 #include<assert.h>
-#include<typedef.h>
-using namespace SurrealTypes;
 
+#if defined(_MSC_VER)
+    //
+    // Windows/Visual C++
+    //
+    typedef signed __int8            int8;
+    typedef unsigned __int8            uint8;
+    typedef signed __int16            int16;
+    typedef unsigned __int16        uint16;
+    typedef signed __int32            int32;
+    typedef unsigned __int32        uint32;
+    typedef signed __int64            int64;
+    typedef unsigned __int64        uint64;
+#endif
 /**///////////////////////////////////////////////////////////////////////////
 /// 字节流缓冲类，可以进行序列化和解序列化操作，并且可以缓冲字节流数据。
 //////////////////////////////////////////////////////////////////////////
@@ -49,13 +60,11 @@ public:
 	//末尾插入数据
     template <typename T> void append(T value)
     {
-        append((STu8*)&value, sizeof(value));
+        append((uint8*)&value, sizeof(value));
     }
-    void append(const STu8 *src, size_t cnt)
+    void append(const uint8 *src, size_t cnt)
     {
         if (!cnt) return;
-
-        assert(size() < 10000000);
 
         if (mStorage.size() < mWritePos + cnt)
         {
@@ -79,10 +88,10 @@ public:
 	//固定位置存入数据，原有数据被覆盖,用于修正数据
     template <typename T> void put(size_t pos, T value)
     {
-        put(pos, (STu8*)&value, sizeof(value));
+        put(pos, (uint8*)&value, sizeof(value));
     }
 	//固定位置存入数据，覆盖原有数据
-	void put(size_t pos, const STu8 *src, size_t cnt)
+	void put(size_t pos, const uint8 *src, size_t cnt)
 	{
 		assert(pos + cnt <= size() || PrintPosError(true, pos, cnt));
 		memcpy(&mStorage[pos], src, cnt);
@@ -91,19 +100,17 @@ public:
 	//任意位置插入数据
 	template <typename T> void insert(size_t pos,T value)
     {
-		insert(pos,(STu8*)&value,sizeof(value));
+		insert(pos,(uint8*)&value,sizeof(value));
     }
-	void insert(int pos,const STu8 *src, size_t cnt)
+	void insert(int pos,const uint8 *src, size_t cnt)
 	{
 		if (!cnt) return;
 
-        assert(size() < 10000000);
-
-		std::vector<STu8>::iterator it=mStorage.begin();
+		std::vector<uint8>::iterator it=mStorage.begin();
 		unsigned int i = cnt;
 		for(;i>0;i--)
 		{
-			mStorage.insert(mStorage.begin(), *((STu8*)src + i-1));
+			mStorage.insert(mStorage.begin(), *((uint8*)src + i-1));
 		}
         mWritePos += cnt;
 	}
@@ -118,59 +125,59 @@ public:
     }
     /**///////////////////////////////////////////////////////////////////////////
 private:
-    //ByteBuffer& operator<<(STbool value)
-    //{
-    //    append<STbool>((STbool)value);
-    //    return *this;
-    //}
-    ByteBuffer& operator<<(STs8 value)
+    ByteBuffer& operator<<(bool value)
     {
-        append<STs8>(value);
+        append<char>((char)value);
         return *this;
     }
-    ByteBuffer& operator<<(STs16 value)
+    ByteBuffer& operator<<(uint8 value)
     {
-        append<STs16>(value);
+        append<uint8>(value);
         return *this;
     }
-    ByteBuffer& operator<<(STs32 value)
+    ByteBuffer& operator<<(uint16 value)
     {
-        append<STs32>(value);
+        append<uint16>(value);
         return *this;
     }
-    ByteBuffer& operator<<(STs64 value)
+    ByteBuffer& operator<<(uint32 value)
     {
-        append<STs64>(value);
+        append<uint32>(value);
         return *this;
     }
-    ByteBuffer& operator<<(STu8 value)
+    ByteBuffer& operator<<(uint64 value)
     {
-        append<STu8>(value);
+        append<uint64>(value);
         return *this;
     }
-    ByteBuffer& operator<<(STu16 value)
+    ByteBuffer& operator<<(int8 value)
     {
-        append<STu16>(value);
+        append<int8>(value);
         return *this;
     }
-    ByteBuffer& operator<<(STu32 value)
+    ByteBuffer& operator<<(int16 value)
     {
-        append<STu32>(value);
+        append<int16>(value);
         return *this;
     }
-    ByteBuffer& operator<<(STu64 value)
+    ByteBuffer& operator<<(int32 value)
     {
-        append<STu64>(value);
+        append<int32>(value);
         return *this;
     }
-    ByteBuffer& operator<<(STfp32 value)
+    ByteBuffer& operator<<(int64 value)
     {
-        append<STfp32>(value);
+        append<int64>(value);
         return *this;
     }
-    ByteBuffer& operator<<(STfp64 value)
+    ByteBuffer& operator<<(float value)
     {
-        append<STfp64>(value);
+        append<float>(value);
+        return *this;
+    }
+    ByteBuffer& operator<<(double value)
+    {
+        append<double>(value);
         return *this;
     }
     //ByteBuffer& operator<<(time_t value)
@@ -180,72 +187,72 @@ private:
     //}
     ByteBuffer& operator<<(const std::string& value)
     {
-        append((STu8 const *)value.c_str(), value.length());
-        append((STu8)0);
+        append((uint8 const *)value.c_str(), value.length());
+        append((uint8)0);
         return *this;
     }
     ByteBuffer& operator<<(const char* str)
     {
-        append( (STu8 const *)str, str ? strlen(str) : 0);
-        append((STu8)0);
+        append( (uint8 const *)str, str ? strlen(str) : 0);
+        append((uint8)0);
         return *this;
     }
     /**///////////////////////////////////////////////////////////////////////////
 
 private:
-    //ByteBuffer& operator>>(STbool& value)
-    //{
-    //    value = read<STbool>() > 0 ? 1 : 0;
-    //    return *this;
-    //}
-    ByteBuffer& operator>>(STs8& value)
+    ByteBuffer& operator>>(bool& value)
     {
-        value = read<STs8>();
+        value = read<char>() > 0 ? true : false;
         return *this;
     }
-    ByteBuffer& operator>>(STs16& value)
+    ByteBuffer& operator>>(uint8& value)
     {
-        value = read<STs16>();
+        value = read<uint8>();
         return *this;
     }
-    ByteBuffer& operator>>(STs32& value)
+    ByteBuffer& operator>>(uint16& value)
     {
-        value = read<STs32>();
+        value = read<uint16>();
         return *this;
     }
-    ByteBuffer& operator>>(STs64& value)
+    ByteBuffer& operator>>(uint32& value)
     {
-        value = read<STs64>();
+        value = read<uint32>();
         return *this;
     }
-    ByteBuffer& operator>>(STu8& value)
+    ByteBuffer& operator>>(uint64& value)
     {
-        value = read<STu8>();
+        value = read<uint64>();
         return *this;
     }
-    ByteBuffer& operator>>(STu16& value)
+    ByteBuffer& operator>>(int8& value)
     {
-        value = read<STu16>();
+        value = read<int8>();
         return *this;
     }
-    ByteBuffer& operator>>(STu32& value)
+    ByteBuffer& operator>>(int16& value)
     {
-        value = read<STu32>();
+        value = read<int16>();
         return *this;
     }
-    ByteBuffer& operator>>(STu64& value)
+    ByteBuffer& operator>>(int32& value)
     {
-        value = read<STu64>();
+        value = read<int32>();
         return *this;
     }
-    ByteBuffer& operator>>(STfp32 &value)
+    ByteBuffer& operator>>(int64& value)
     {
-        value = read<STfp32>();
+        value = read<int64>();
         return *this;
     }
-    ByteBuffer& operator>>(STfp64 &value)
+    ByteBuffer& operator>>(float &value)
     {
-        value = read<STfp64>();
+        value = read<float>();
+        return *this;
+    }
+    ByteBuffer& operator>>(double &value)
+    {
+        value = read<double>();
         return *this;
     }
     //ByteBuffer& operator>>(time_t& value)
@@ -267,27 +274,27 @@ private:
         }
         return *this;
     }
-    ByteBuffer& operator>>(const STs8 value[])
+    ByteBuffer& operator>>(char value[])
     {
         std::string strValue;
         strValue.clear();
         while (rpos() < size())
         {
-			STs8 c = read<STs8>();
+            char c = read<char>();
             if (c == 0)
             {
                 break;
             }
             strValue += c;
         }
-        strncpy_s((char*)value, strlen((char*)value),strValue.c_str(), strValue.size());
+        strncpy_s(value, strlen(value),strValue.c_str(), strValue.size());
         return *this;
     }
     /**///////////////////////////////////////////////////////////////////////////
 public:
-    STu8 operator[](size_t pos)
+    uint8 operator[](size_t pos)
     {
-        return read<STu8>(pos);
+        return read<uint8>(pos);
     }
     size_t rpos() const
     {
@@ -333,13 +340,13 @@ public:
         assert(pos + sizeof(T) <= size() || PrintPosError(false,pos,sizeof(T)));
         return *((T const*)&mStorage[pos]);
     }
-    void read(STu8 *dest, size_t len)
+    void read(uint8 *dest, size_t len)
     {
         assert(mReadPos  + len  <= size() || PrintPosError(false, mReadPos,len));
         memcpy(dest, &mStorage[mReadPos], len);
         mReadPos += len;
     }
-    const STu8* contents() const { if(mReadPos==mWritePos) return NULL; return &mStorage[mReadPos]; }
+    const uint8* contents() const { if(mReadPos==mWritePos) return NULL; return &mStorage[mReadPos]; }
     size_t size() const { return mStorage.size(); }
     bool empty() const { return mStorage.empty(); }
     void resize(size_t _NewSize)
@@ -398,7 +405,7 @@ public:
 private:
     void append(const std::string& str)
     {
-        append((STu8 const*)str.c_str(), str.size() + 1);
+        append((uint8 const*)str.c_str(), str.size() + 1);
     }
     void append(const ByteBuffer& buffer)
     {
@@ -436,7 +443,7 @@ public:
 protected:
     size_t                mReadPos;
     size_t                mWritePos;
-    std::vector<STu8>    mStorage;
+    std::vector<uint8>    mStorage;
 };
 
 
