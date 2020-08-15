@@ -143,6 +143,13 @@ void ParseProto::DoTraversalFieldDescript(const google::protobuf::Message& messa
 
 
 		case google::protobuf::FieldDescriptor::TYPE_FIXED32:
+		{
+			int i = reflection->GetUInt32(message, field);
+			std::ostringstream stream;
+			stream << i;
+			result.insert(std::pair<std::string, std::string>(field->full_name(), stream.str()));
+			break;
+		}
 		case google::protobuf::FieldDescriptor::TYPE_INT32:
 		{
 			int i = reflection->GetInt32(message, field);
