@@ -17,6 +17,9 @@ using namespace SurrealTypes;
 #include<SimpleIni.h>
 #include<http\http_util.h>
 
+
+
+//以下为MemoryPool库需要的头文件和库文件（静态编译）
 #include"../MemoryPool/MemMgr.h"
 
 #ifdef _DEBUG
