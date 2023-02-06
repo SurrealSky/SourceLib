@@ -1,11 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32407.337
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPPSourceLib", "CPPSourceLib\CPPSourceLib.vcxproj", "{999339C2-A954-4EFF-81C4-2EA9490D884E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0E580F73-5386-4B41-8BDD-3D0A9857D43F} = {0E580F73-5386-4B41-8BDD-3D0A9857D43F}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MemoryPool", "MemoryPool\MemoryPool.vcxproj", "{0E580F73-5386-4B41-8BDD-3D0A9857D43F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MemMgr", "MemoryPool\MemoryPool.vcxproj", "{0E580F73-5386-4B41-8BDD-3D0A9857D43F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,5 +35,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FAC3656-BA7F-4876-AE52-A714112FCAB1}
 	EndGlobalSection
 EndGlobal

@@ -18,4 +18,15 @@ using namespace SurrealTypes;
 #include<http\http_util.h>
 
 #include"../MemoryPool/MemMgr.h"
+
+#ifdef _DEBUG
+
 #pragma comment(lib,"../debug/MemMgr.lib")
+
+#else
+
+#pragma comment(lib,"../release/MemMgr.lib")
+
+#endif // DEBUG
+
+

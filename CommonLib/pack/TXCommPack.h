@@ -1,8 +1,11 @@
 #pragma once
+#include<typedef.h>
 #include<pack\ByteBuffer.h>
 
+using namespace SurrealTypes;
+
 #define BUFFER_SIZE	0x200
-#pragma pack(1)
+//#pragma pack(1)
 class CTXCommPack
 {
 public:
