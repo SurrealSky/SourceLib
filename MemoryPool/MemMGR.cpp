@@ -13,26 +13,19 @@ using namespace SurrealMemMgr;
 
 MemMgr &MemMgr::GetInstance()
 {
-	//static MemMgr *instance = NULL;
-	//if (!instance)
-	//{
-	//	AutoLock lock;
-	//	if (!instance)
-	//	{
-	//		instance = new MemMgr();
-	//	}
-	//}
-	//return *instance;
-	SurrealDebugLog::DebugLog("MemMgr","MemMgr");
 	AutoLock lock;
 	static MemMgr instance;
+	instance.isDebug2File = false;
 	return instance;
 }
+
+
 
 MemMgr::MemMgr()
 {
 	pImpl = new MemManager();
-	SurrealDebugLog::DebugLog("MemManager","init");
+	if(isDebug2File)
+		SurrealDebugLog::DebugLog("MemManager","init");
 }
 
 MemMgr::~MemMgr()
@@ -42,7 +35,13 @@ MemMgr::~MemMgr()
 		delete pImpl;
 		pImpl = NULL;
 	}
-	SurrealDebugLog::DebugLog("MemManager","destory");
+	if (isDebug2File)
+		SurrealDebugLog::DebugLog("MemManager","destory");
+}
+
+void MemMgr::SetDebug2File(bool b)
+{
+	isDebug2File = b;
 }
 
 const MemMgr &MemMgr::operator=(const MemMgr &m)
@@ -64,20 +63,17 @@ MemMgr::MemMgr(const MemMgr &m)
 	pImpl = new MemManager(*m.pImpl);
 }
 
-int MemMgr::GetState()
-{
-	return 42;
-}
-
 STu8* MemMgr::CommonAlloc(const MemAllocType _type,const STu64 Size)
 {
 	STu8 *pointer= (STu8*)pImpl->CommonAlloc(_type, Size);
-	SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemAlloc=%02X,address=0x%08X,size=0x%X","CommonAlloc", _type, pointer,Size));
+	if (isDebug2File)
+		SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemAlloc=%02X,address=0x%08X,size=0x%X","CommonAlloc", _type, pointer,Size));
 	return pointer;
 }
 
 void MemMgr::CommonDeallocate(const MemAllocType _type, STu8 *p, const STu64 Size)
 {
-	SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemFree=%02X,address=0x%08X,size=%X","CommonAlloc", _type, p,Size));
+	if (isDebug2File)
+		SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemFree=%02X,address=0x%08X,size=%X","CommonAlloc", _type, p,Size));
 	return pImpl->CommonDeallocate(_type,(char*)p, Size);
 }
