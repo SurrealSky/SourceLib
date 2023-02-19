@@ -121,7 +121,6 @@
     <ClCompile Include="..\CommonLib\disasm\asmserv.cpp" />
     <ClCompile Include="..\CommonLib\disasm\assembl.cpp" />
     <ClCompile Include="..\CommonLib\disasm\disasm.cpp" />
-    <ClCompile Include="..\CommonLib\LogLib\DebugLog.cpp" />
     <ClCompile Include="..\CommonLib\LogLib\log4z.cpp" />
     <ClCompile Include="..\CommonLib\MiniDump.cpp" />
     <ClCompile Include="..\CommonLib\pack\TXCommPack.cpp" />
@@ -137,7 +136,6 @@
     <ClInclude Include="..\CommonLib\isaac\isaac32_engine.h" />
     <ClInclude Include="..\CommonLib\isaac\isaac64_engine.h" />
     <ClInclude Include="..\CommonLib\Lock.h" />
-    <ClInclude Include="..\CommonLib\LogLib\DebugLog.h" />
     <ClInclude Include="..\CommonLib\LogLib\log4z.h" />
     <ClInclude Include="..\CommonLib\MiniDump.h" />
     <ClInclude Include="..\CommonLib\pack\ByteBuffer.h" />

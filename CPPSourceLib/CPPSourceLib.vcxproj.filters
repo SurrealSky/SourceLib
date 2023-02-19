@@ -57,9 +57,6 @@
     <ClCompile Include="demo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\CommonLib\LogLib\DebugLog.cpp">
-      <Filter>CommonLib\LogLib</Filter>
-    </ClCompile>
     <ClCompile Include="..\CommonLib\LogLib\log4z.cpp">
       <Filter>CommonLib\LogLib</Filter>
     </ClCompile>
@@ -100,9 +97,6 @@
     </ClInclude>
     <ClInclude Include="..\CommonLib\typedef.h">
       <Filter>CommonLib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CommonLib\LogLib\DebugLog.h">
-      <Filter>CommonLib\LogLib</Filter>
     </ClInclude>
     <ClInclude Include="..\CommonLib\LogLib\log4z.h">
       <Filter>CommonLib\LogLib</Filter>

@@ -2,7 +2,6 @@
 #include"MemMgr.h"
 #include"MemManager.h"
 #include<Lock.h>
-#include<LogLib\DebugLog.h>
 #include <memory>
 #include <iostream>
 #include <string>
@@ -24,8 +23,10 @@ MemMgr &MemMgr::GetInstance()
 MemMgr::MemMgr()
 {
 	pImpl = new MemManager();
-	if(isDebug2File)
-		SurrealDebugLog::DebugLog("MemManager","init");
+	if (isDebug2File)
+	{
+		SurrealDebugLog::DebugLog("MemManager", "init");
+	}
 }
 
 MemMgr::~MemMgr()
