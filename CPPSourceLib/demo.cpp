@@ -15,6 +15,7 @@ int main()
 	LOGD("hex data" << ":" << Log4zBinary(buffer, sizeof(buffer)));
 
 	SurrealMemMgr::MemMgr &memmgr= SurrealMemMgr::MemMgr::GetInstance();
+	memmgr.SetDebug2File(true);
 	STu8 *p1=memmgr.CommonAlloc(SurrealMemMgr::TypeSGIAllocTAlloc, 100);
 	STu8 *p2 = memmgr.CommonAlloc(SurrealMemMgr::TypeSGIHeapAllocTAlloc, 200);
 	STu8 *p3 = memmgr.CommonAlloc(SurrealMemMgr::TypeSGIMTAllocatorAlloc, 200);

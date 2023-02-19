@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "MemManager.h"
-#include<LogLib\DebugLog.h>
 
 MemMgr::MemManager::MemManager(void)
 {

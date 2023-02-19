@@ -6,6 +6,9 @@
 #include <iostream>
 #include <string>
 #include <cstdio>
+#include"../CommonLib/LogLib/log4z.h"
+
+using namespace zsummer::log4z;
 
 using namespace SurrealMemMgr;
 
@@ -25,7 +28,10 @@ MemMgr::MemMgr()
 	pImpl = new MemManager();
 	if (isDebug2File)
 	{
-		SurrealDebugLog::DebugLog("MemManager", "init");
+		ILog4zManager::getRef().setLoggerPath(LOG4Z_MAIN_LOGGER_ID, "./log");
+		ILog4zManager::getRef().start();
+		ILog4zManager::getRef().setLoggerLevel(LOG4Z_MAIN_LOGGER_ID, LOG_LEVEL_TRACE);
+		LOGD("init");
 	}
 }
 
@@ -37,7 +43,7 @@ MemMgr::~MemMgr()
 		pImpl = NULL;
 	}
 	if (isDebug2File)
-		SurrealDebugLog::DebugLog("MemManager","destory");
+		LOGD("destory");
 }
 
 void MemMgr::SetDebug2File(bool b)
@@ -68,13 +74,13 @@ STu8* MemMgr::CommonAlloc(const MemAllocType _type,const STu64 Size)
 {
 	STu8 *pointer= (STu8*)pImpl->CommonAlloc(_type, Size);
 	if (isDebug2File)
-		SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemAlloc=%02X,address=0x%08X,size=0x%X","CommonAlloc", _type, pointer,Size));
+		LOGD(string_format("%s:MemAlloc=%02X,address=0x%08X,size=0x%X", "CommonAlloc", _type, pointer, Size));
 	return pointer;
 }
 
 void MemMgr::CommonDeallocate(const MemAllocType _type, STu8 *p, const STu64 Size)
 {
 	if (isDebug2File)
-		SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemFree=%02X,address=0x%08X,size=%X","CommonAlloc", _type, p,Size));
+		LOGD(string_format("%s:MemFree=%02X,address=0x%08X,size=%X", "CommonAlloc", _type, p, Size));
 	return pImpl->CommonDeallocate(_type,(char*)p, Size);
 }
