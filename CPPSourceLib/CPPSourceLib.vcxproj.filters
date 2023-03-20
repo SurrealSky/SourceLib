@@ -34,6 +34,9 @@
     <Filter Include="CommonLib\http">
       <UniqueIdentifier>{019bafdc-b50d-4f04-90e7-6518dd68573d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CommonLib\ecdh">
+      <UniqueIdentifier>{b6ba981f-926b-4f83-847e-476a22c9d047}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\CommonLib\MiniDump.cpp">
@@ -59,6 +62,9 @@
     </ClCompile>
     <ClCompile Include="..\CommonLib\LogLib\log4z.cpp">
       <Filter>CommonLib\LogLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\ecdh\ecdh.c">
+      <Filter>CommonLib\ecdh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="..\CommonLib\http\http_util.h">
       <Filter>CommonLib\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\ecdh\ecdh.h">
+      <Filter>CommonLib\ecdh</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

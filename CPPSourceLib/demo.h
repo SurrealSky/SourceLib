@@ -16,6 +16,7 @@ using namespace SurrealTypes;
 #include<MiniDump.h>
 #include<SimpleIni.h>
 #include<http\http_util.h>
+#include<ecdh/ecdh.h>
 
 
 
