@@ -15,7 +15,6 @@ using namespace SurrealMemMgr;
 
 MemMgr &MemMgr::GetInstance()
 {
-	AutoLock lock;
 	static MemMgr instance;
 	instance.isDebug2File = false;
 	return instance;

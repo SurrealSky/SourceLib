@@ -2,44 +2,47 @@
 #include<Windows.h>
 class CLock
 {
-public:
-	CLock()
-	{
-		InitializeCriticalSection(&m_cs);
-	}
-
-	~CLock()
-	{
-		DeleteCriticalSection(&m_cs);
-	}
-
-	void Lock()
-	{
-		EnterCriticalSection(&m_cs);
-	}
-
-	void Unlock()
-	{
-		LeaveCriticalSection(&m_cs);
-	}
 private:
-	CRITICAL_SECTION    m_cs;
+    CRITICAL_SECTION m_section;
+public:
+    CLock(void)
+    {
+        InitializeCriticalSection(&m_section);
+    }
+    ~CLock(void)
+    {
+        DeleteCriticalSection(&m_section);
+    }
+    void lock()
+    {
+        EnterCriticalSection(&m_section);
+    }
+    void unLock()
+    {
+        LeaveCriticalSection(&m_section);
+    }
 };
-
-class AutoLock
+class CAutoLock
 {
+private:
+    CLock* m_pLock;
 public:
-	AutoLock()
-	{
-		m_lock.Lock();
-	}
-	~AutoLock()
-	{
-		m_lock.Unlock();
-	}
-private:
-	CLock   m_lock;
-private:
-	AutoLock(const AutoLock& lock);
-	AutoLock& operator=(const AutoLock& lock);
+    CAutoLock(CLock* pLock)
+    {
+        m_pLock = pLock;
+        pLock->lock();
+    }
+    ~CAutoLock()
+    {
+        m_pLock->unLock();
+    }
 };
+// 示例:
+//CLock g_lock;
+//void main()
+//{
+//    {
+//        CAutoLock _lock(&g_lock);
+//        //...
+//    }// _lock 变量在此处析构, 析构时被解锁
+//}
